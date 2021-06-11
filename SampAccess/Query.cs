@@ -153,7 +153,7 @@ namespace SampAccess
 
         /// <summary>
         /// Creates new instance of <see cref="Query"/>
-        /// <para>If you set send (or receive) time-out to 0, it will be indicate infinite time-out period</para>
+        /// <para>If you set send (or receive) time-out to 0, it will indicate infinite time-out period</para>
         /// </summary>
         /// <param name="IP"></param>
         /// <param name="Port"></param>
