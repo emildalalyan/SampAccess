@@ -3,12 +3,9 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <SignAssembly>false</SignAssembly>
-    <AssemblyOriginatorKeyFile>SampQueryApi.snk</AssemblyOriginatorKeyFile>
-    <Authors>zeelorenc</Authors>
-    <Copyright>zeelorenc</Copyright>
-    <PackageLicenseExpression>GNU GPL v3</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/zeelorenc/SA-MP-Server-Query-Class</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/zeelorenc/SA-MP-Server-Query-Class</RepositoryUrl>
+    <Authors>Emil Dalalyan</Authors>
+    <Copyright>Emil Dalalyan</Copyright>
+    <PackageLicenseExpression>MIT Licence</PackageLicenseExpression>
     <RepositoryType>Git</RepositoryType>
   </PropertyGroup>
 
