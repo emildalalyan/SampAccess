@@ -171,16 +171,7 @@ namespace SampAccess
 
             Connection.Connect(Address);
         }
-
-        /// <summary>
-        /// Static constructor of class <see cref="Query"/>
-        /// </summary>
-        static Query()
-        {
-            CodePages.AddCodePages();
-            //We're registring more encodings from System.Text.Encoding.CodePages package
-        }
-
+        
         /// <summary>
         /// Send query to the server and gather all information about it
         /// </summary>
