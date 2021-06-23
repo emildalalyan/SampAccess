@@ -9,4 +9,4 @@ This .NET library simplify your access to SA:MP servers (gather information abou
 
 - Only *Query* class is **CROSS-PLATFORM**, *Client* class **IS NOT**. *Client* class requires ***Microsoft.Win32.Registry*** package, which is working only in Windows.
 
-- The algorithm is based on https://github.com/zeelorenc/SA-MP-Server-Query-Class, but completely rewritten 
+- The *Query* algorithm is based on https://github.com/zeelorenc/SA-MP-Server-Query-Class, but completely rewritten 
