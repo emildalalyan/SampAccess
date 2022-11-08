@@ -1,5 +1,5 @@
 # SampAccess Library
-This .NET library may simplify your access to SA:MP servers (gather information about them) and to SA:MP client settings
+This .NET library may simplify your access to SA:MP servers (gathering information about them) and to SA:MP client settings
 - [![NuGet](https://img.shields.io/github/v/release/emildalalyan/SampAccess?sort=semver&style=flat-square)](https://www.nuget.org/packages/SampAccess)
 
 ### Requirements
