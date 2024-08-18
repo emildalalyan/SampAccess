@@ -35,7 +35,6 @@ namespace SampAccess
         /// <summary>
         /// Path to <b>game executable</b> in the Windows version of SAMP client
         /// </summary>
-        /// <param name="output"></param>
         public static string GameExecutable
         {
             get
@@ -53,7 +52,6 @@ namespace SampAccess
         /// <summary>
         /// <b>Save RCON passwords</b> checkbox in Windows version of SAMP client 
         /// </summary>
-        /// <param name="output"></param>
         public static bool? SaveRconPasswords
         {
             get
@@ -71,7 +69,6 @@ namespace SampAccess
         /// <summary>
         /// <b>Save server passwords</b> checkbox in Windows version of SAMP client 
         /// </summary>
-        /// <param name="output"></param>
         public static bool? SaveServerPasswords
         {
             get
