@@ -9,9 +9,10 @@
     <RepositoryType>Git</RepositoryType>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <Title>SampAccess</Title>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/emildalalyan/SampAccess</RepositoryUrl>
+    <AssemblyVersion></AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

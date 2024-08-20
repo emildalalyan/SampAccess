@@ -10,18 +10,18 @@ using System.Diagnostics;
 namespace SampAccess
 {
     /// <summary>
-    /// Class intended to taking query to SAMP server
-    /// <para>It is supporting only IPv4 addresses.</para>
+    /// This class can get and handle information from given SAMP server.
+    /// <para>It can work with IPv4 addresses only.</para>
     /// </summary>
     public class Query : IDisposable
     {
         /// <summary>
-        /// Address of server, that gets queries 
+        /// Address of server that gets our queries.
         /// </summary>
         public IPEndPoint Address { get; }
 
         /// <summary>
-        /// Represents connection with server
+        /// This is the connection with server
         /// </summary>
         private Socket Connection { get; }
 
@@ -31,28 +31,29 @@ namespace SampAccess
         public enum QueryType : byte
         {
             /// <summary>
-            /// Gather common information about server
+            /// Get common information about server
             /// </summary>
             CommonInformation = 0,
 
             /// <summary>
-            /// Gather list of server rules
+            /// Get list of server rules
             /// </summary>
             ListOfRules = 1,
 
             /// <summary>
-            /// Gather common information about players
+            /// Get common information about players
             /// </summary>
             CommonPlayersInformation = 2,
 
             /// <summary>
-            /// Gather detailed information about players
+            /// Get detailed information about players
             /// </summary>
             DetailedPlayersInformation = 3
         }
 
         /// <summary>
-        /// Query (packet) type
+        /// Query type characters.
+        /// Server gets query type as a character. 
         /// </summary>
         private readonly char[] PacketType = 
         {
@@ -60,43 +61,43 @@ namespace SampAccess
         };
 
         /// <summary>
-        /// Struct, representing information about server
+        /// This structure contains information about a server
         /// </summary>
         public readonly struct ServerInformation
         {
             /// <summary>
-            /// Number of online players
+            /// Number of online players.
             /// </summary>
             public ushort PlayersOnline { get; init; }
 
             /// <summary>
-            /// Maximum number of online players
+            /// Maximum number of online players.
             /// </summary>
             public ushort LimitOfPlayers { get; init; }
 
             /// <summary>
-            /// Server has password (true) or not (false)
+            /// Indicates whether a server has password (true) or not (false).
             /// </summary>
             public bool HasPassword { get; init; }
 
             /// <summary>
-            /// Name of server (host)
+            /// Server host name.
             /// </summary>
             public string HostName { get; init; }
 
             /// <summary>
-            /// GameMode of server (host)
+            /// Server game mode.
             /// </summary>
             public string GameMode { get; init; }
 
             /// <summary>
-            /// Language of server (host)
+            /// Language of a server.
             /// </summary>
             public string Language { get; init; }
         }
 
         /// <summary>
-        /// Structure representing a player on server
+        /// This structure contains information about a player on a server
         /// </summary>
         public readonly struct Player
         {
@@ -107,22 +108,22 @@ namespace SampAccess
         }
 
         /// <summary>
-        /// Private field, that is indicating, that <see cref="Query"/> is disposed
+        /// Private field, that indicates that <see cref="Query"/> is disposed
         /// </summary>
         private bool _isdisposed = false;
 
         /// <summary>
-        /// Common information about server
+        /// Common information about server.
         /// </summary>
         public ServerInformation CommonInformation { get; private set; }
 
         /// <summary>
-        /// Represents ping in milliseconds
+        /// Ping (measured in milliseconds).
         /// </summary>
         public double? PingInMilliseconds { get; private set; }
 
         /// <summary>
-        /// Represents list of server rules
+        /// This is the list of server rules.
         /// </summary>
         public Dictionary<string, string> ServerRules { get; private set; }
 
@@ -137,17 +138,17 @@ namespace SampAccess
         protected const byte SampMessageLength = 11;
 
         /// <summary>
-        /// List, representing information about players
+        /// List that has information about players.
         /// </summary>
         public List<Player> PlayersInformation { get; } = new(byte.MaxValue+1);
 
         /// <summary>
-        /// Length of SAMP server answer
+        /// Length of SAMP server answer.
         /// </summary>
         protected const ushort SampAnswerLength = 2048; // 2 KB
 
         /// <summary>
-        /// What encoding the text is encoded in 
+        /// This code page will be used while interpreting data from a server.
         /// </summary>
         public ushort TextCodePage { get; init; } = 1251;
 
@@ -155,10 +156,6 @@ namespace SampAccess
         /// Creates new instance of <see cref="Query"/>
         /// <para>If you set send (or receive) time-out to 0, it will indicate infinite time-out period</para>
         /// </summary>
-        /// <param name="IP"></param>
-        /// <param name="Port"></param>
-        /// <param name="SendTimeout"></param>
-        /// <param name="ReceiveTimeout"></param>
         public Query(string IP, ushort Port, ushort SendTimeout = 5000, ushort ReceiveTimeout = 5000)
         {
             Address = new(IPAddress.Parse(IP), Port);
@@ -173,9 +170,8 @@ namespace SampAccess
         }
         
         /// <summary>
-        /// Send query to the server and gather all information about it
+        /// Send query to the server and get all information about it
         /// </summary>
-        /// <param name="Type"></param>
         /// <exception cref="SocketException"/>
         public void Initialize()
         {
@@ -186,9 +182,8 @@ namespace SampAccess
         }
 
         /// <summary>
-        /// Send query to the server and gather some information about it
+        /// Send query to the server and get some information about it.
         /// </summary>
-        /// <param name="Type"></param>
         /// <exception cref="SocketException"></exception>
         public void Initialize(QueryType Type)
         {
@@ -219,7 +214,7 @@ namespace SampAccess
                 using MemoryStream stream = new(receive);
                 using BinaryReader read = new(stream);
 
-                read.ReadBytes(SampMessageLength); // When you recieve a packet, there are 11 bytes (this is what we sent) of a packet you can remove right away.
+                read.ReadBytes(SampMessageLength); // When you recieve a packet, there are 11 bytes (this is what we sent) that you can remove right away.
 
                 switch (Type)
                 {
@@ -284,7 +279,7 @@ namespace SampAccess
         }
 
         /// <summary>
-        /// Close connection with the server
+        /// Close server connection.
         /// </summary>
         public void Dispose()
         {
