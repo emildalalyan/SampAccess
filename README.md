@@ -68,3 +68,39 @@ namespace Test
     }
 }
 ```
+
+### Client example
+Client is even more simple, than Query class:
+```c#
+using System;
+using SampAccess;
+
+namespace Test
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine($"Your nickname: {Client.PlayerName}");
+            Console.WriteLine($"Game executable path: {Client.GameExecutable}");
+            Console.WriteLine("Checkboxes:\n" +
+                $"Save RCON passwords: {Client.SaveRconPasswords}\n" +
+                $"Save server passwords: {Client.SaveServerPasswords}");
+
+            Console.WriteLine();
+
+            Console.Write("Your new nickname: ");
+            Client.PlayerName = Console.ReadLine();
+
+            Console.Write("Your new game executable: ");
+            Client.GameExecutable = Console.ReadLine();
+
+            Console.Write("Do you want to save RCON passwords: ");
+            Client.SaveRconPasswords = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Do you want to save server passwords: ");
+            Client.SaveServerPasswords = Convert.ToInt32(Console.ReadLine());
+        }
+    }
+}
+```
